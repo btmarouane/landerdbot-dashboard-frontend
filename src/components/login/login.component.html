@@ -1,11 +1,29 @@
-<div style="text-align:center">
-    <h1>
-        Login
-    </h1>
-</div>
+<div class="container">
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form (ngSubmit)="login(username.value, password.value)">
+            <p>
+                <mat-form-field>
+                    <input #username type="text" matInput placeholder="Username" formControlName="username">
+                </mat-form-field>
+            </p>
 
-<input #username type='text' placeholder='username'>
-<input #password type='password' placeholder='password'>
-<button (click)="login(username.value, password.value)">login</button>
-<p>{{ error?.message }}</p>
-<p *ngIf="error">{{ error?.error | json }}</p>
+            <p>
+                <mat-form-field>
+                    <input #password type="password" matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+            </p>
+
+            <p *ngIf="error" class="error">
+                {{ error?.message }}
+            </p>
+
+            <div class="button">
+                <button color="primary" type="submit" mat-button>Login</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+</div>
