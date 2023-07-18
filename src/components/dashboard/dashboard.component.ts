@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
 
     onSwitchServer(): void{
         const state = this.serverStatus !== true;
-        this.httpClient.post(this.serverApi + 'switchServer', `{"state": ${state}`)
+        this.httpClient.post(this.serverApi + '/switchServer', `{"state": ${state}`)
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
