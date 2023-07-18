@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
     usersForm: FormGroup;
     keywords = '';
     paramsForm: FormGroup;
-    serverApi = 'http://localhost:8000/api';
+    serverApi = 'http://147.182.207.208:8000/api';
 
     response: any;
 
