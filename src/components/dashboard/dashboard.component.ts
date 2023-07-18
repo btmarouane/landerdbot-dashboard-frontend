@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
     }
 
     onCheckServerStatus(): void{
-        this.httpClient.get(this.serverApi + '/serverStatus')
+        this.httpClient.get(this.serverApi + '/serverStatus/')
             .subscribe(response => {
                     this.response = response;
                     this.serverStatus = this.response;
@@ -58,7 +58,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
 
     onSwitchServer(): void{
         const state = this.serverStatus !== true;
-        this.httpClient.post(this.serverApi + '/switchServer', `{"state": ${state}`)
+        this.httpClient.post(this.serverApi + '/serverStatus/update/', `{"state": ${state}`)
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
