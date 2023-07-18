@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-dashboard',
@@ -23,7 +24,8 @@ export class DashboardComponent implements OnInit, OnDestroy{
         private fb: FormBuilder,
         private httpClient: HttpClient,
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private snackBar: MatSnackBar
     )
     {
     }
@@ -83,9 +85,11 @@ export class DashboardComponent implements OnInit, OnDestroy{
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
+                    this.snackBar.open('Users updated successfully', 'OK');
                 },
                 error => {
                     this.response = error.error;
+                    this.snackBar.open('Error occurred. Please try again later', 'OK');
                 });
     }
 
@@ -105,9 +109,11 @@ export class DashboardComponent implements OnInit, OnDestroy{
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
+                    this.snackBar.open('Keywords updated successfully', 'OK');
                 },
                 error => {
                     this.response = error.error;
+                    this.snackBar.open('Error occurred. Please try again later', 'OK');
                 });
     }
 
