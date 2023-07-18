@@ -11,7 +11,7 @@ import * as moment from 'moment';
 @Injectable()
 export class AuthService {
 
-    private apiRoot = 'http://localhost:8000/auth/';
+    private apiRoot = 'http://147.182.207.208:8000/auth/';
 
     constructor(private http: HttpClient) { }
 
