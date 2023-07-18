@@ -58,10 +58,11 @@ export class DashboardComponent implements OnInit, OnDestroy{
 
     onSwitchServer(): void{
         const state = this.serverStatus !== true;
-        this.httpClient.post(this.serverApi + '/serverStatus/update/', `{"state": ${state}`)
+        this.httpClient.post(this.serverApi + '/serverStatus/update/', `{"state": ${state}}`)
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
+                    this.snackBar.open(`Bot switched to ${this.serverStatus} successfully`, 'OK');
                 },
                 error => {
                     this.response = error.error;
