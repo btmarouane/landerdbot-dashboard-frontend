@@ -12,16 +12,23 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {DashboardComponent} from '../dashboard/dashboard.component';
+import {LoginComponent} from '../login/login.component';
+import {AuthGuard, AuthInterceptor, AuthService} from '../../services/auth.service';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+        AppComponent,
+        DashboardComponent,
+        LoginComponent
   ],
     imports: [
+        AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
         MatToolbarModule,
@@ -39,7 +46,14 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
         MatSlideToggleModule,
         FormsModule
     ],
-  providers: [],
+  providers: [AuthService,
+      AuthGuard,
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
