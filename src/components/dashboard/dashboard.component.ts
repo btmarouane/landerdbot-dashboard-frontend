@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
     usersForm: FormGroup;
     keywords = '';
     paramsForm: FormGroup;
+    stateForms: FormGroup;
     serverApi = 'http://147.182.207.208:8000/api';
 
     response: any;
@@ -37,6 +38,9 @@ export class DashboardComponent implements OnInit, OnDestroy{
         this.paramsForm = this.fb.group({
             keywords: ['']
         });
+        this.stateForms = this.fb.group({
+            state: ['']
+        });
         this.onCheckServerStatus();
         this.onFetchUsers();
         this.onFetchKeywords();
@@ -58,7 +62,9 @@ export class DashboardComponent implements OnInit, OnDestroy{
 
     onSwitchServer(): void{
         const state = this.serverStatus !== true;
-        this.httpClient.post(this.serverApi + '/serverStatus/update/', `{"state": ${state}}`)
+        this.stateForms.controls.state.setValue(state);
+        const data = this.stateForms.getRawValue();
+        this.httpClient.post(this.serverApi + '/serverStatus/update/', data)
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
