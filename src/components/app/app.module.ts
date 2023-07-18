@@ -20,6 +20,7 @@ import {DashboardComponent} from '../dashboard/dashboard.component';
 import {LoginComponent} from '../login/login.component';
 import {AuthGuard, AuthInterceptor, AuthService} from '../../services/auth.service';
 import {AppRoutingModule} from './app-routing.module';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {AppRoutingModule} from './app-routing.module';
         MatProgressSpinnerModule,
         MatProgressBarModule,
         MatSlideToggleModule,
-        FormsModule
+        FormsModule,
+        MatSnackBarModule
     ],
   providers: [AuthService,
       AuthGuard,
