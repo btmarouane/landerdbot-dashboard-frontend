@@ -8,11 +8,9 @@
 </div>
 <div style="margin-right: 55px; margin-left: 55px; margin-top: 35px">
     <mat-card>
-        <mat-card-header>
-            <h3>Bot status :</h3>
-        </mat-card-header>
         <mat-card-content>
             <div style="text-align: center; margin-top: 20px">
+                <h3>Bot status :</h3>
                 <mat-slide-toggle color="primary" [(ngModel)]="serverStatus" (change)="onSwitchServer()">{{serverStatus?'ON':'OFF'}}</mat-slide-toggle>
             </div>
         </mat-card-content>
