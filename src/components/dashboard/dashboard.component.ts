@@ -61,8 +61,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
     }
 
     onSwitchServer(): void{
-        const state = this.serverStatus !== true;
-        this.stateForms.controls.state.setValue(state);
+        this.stateForms.controls.state.setValue(this.serverStatus);
         const data = this.stateForms.getRawValue();
         this.httpClient.post(this.serverApi + '/serverStatus/update/', data)
             .subscribe(response => {
