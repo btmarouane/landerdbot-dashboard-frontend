@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy{
             .subscribe(response => {
                     this.response = response;
                     this.onCheckServerStatus();
-                    this.snackBar.open(`Bot switched to ${this.serverStatus} successfully`, 'OK');
+                    this.snackBar.open(`Bot switched to ${this.serverStatus ? 'ON' : 'OFF'} successfully`, 'OK');
                 },
                 error => {
                     this.response = error.error;
